@@ -1,4 +1,4 @@
-#$Header: /home/cvs/date-sundayletter/lib/Date/SundayLetter.pm,v 1.1.1.1 2001/08/05 21:13:26 rbowen Exp $
+#$Header: /home/cvs/date-sundayletter/lib/Date/SundayLetter.pm,v 1.10 2002/08/29 23:33:13 rbowen Exp $
 package Date::SundayLetter;
 use Date::Leapyear;
 use strict;
@@ -6,13 +6,15 @@ use strict;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 1.01;
+	$VERSION     = (qw'$Revision: 1.10 $')[1];
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw (sundayletter letter);
 	@EXPORT_OK   = qw ();
 	%EXPORT_TAGS = ();
 }
+
+# Documentation {{{
 
 =head1 NAME
 
@@ -90,10 +92,13 @@ LICENSE file included with this module.
  Reefknot (http://reefknot.org/)
  Date::Easter
  Date::Passover
- Date::Algorithms (not released yet)
- Date::Leapyear;
+ Date::Leapyear
 
 =cut
+
+# }}}
+
+# sub sundayletter {{{
 
 sub letter { return sundayletters(@_) }
 
@@ -119,7 +124,9 @@ sub sundayletters {
     }
 
     return $letter;
-}
+} #}}}
+
+# sub parameter {{{
 
 sub parameter {
 # The "parameter" is a magic number that tracks how far the Gregorian
@@ -132,7 +139,7 @@ sub parameter {
     my $P = ( int( $S/4 ) - $S ) % 7;
 
     return $P;
-}
+} # }}}
 
 1;
 
